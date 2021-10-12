@@ -1,0 +1,19 @@
+# See the OWNERS docs at https://go.k8s.io/owners
+
+approvers:
+  - goern
+  - fridex
+  - screeley44
+  - fzdarsky
+  - cooktheryan
+  - oglok
+  - lukehinds
+reviewers:
+  - pacospace
+  - harshad16
+  - kpostoffice
+  - screeley44
+  - fzdarsky
+  - cooktheryan
+  - oglok
+  - lukehinds
