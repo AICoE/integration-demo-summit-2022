@@ -1,0 +1,74 @@
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  name: microshift-device
+  namespace: ushift-dev
+spec:
+  running: true
+  template:
+    metadata:
+      name: microshift-device
+    spec:
+      domain:
+        cpu:
+          cores: 2
+          sockets: 1
+          threads: 1
+        devices:
+          disks:
+            - bootOrder: 1
+              disk:
+                bus: virtio
+              name: rootdisk
+            - bootOrder: 2
+              cdrom:
+                bus: sata
+              name: cdromiso
+          interfaces:
+            - masquerade: {}
+              model: virtio
+              name: nic-0
+          networkInterfaceMultiqueue: true
+          rng: {}
+        resources:
+          requests:
+            memory: 4Gi
+          limits:
+            memory: 4Gi
+      networks:
+        - name: nic-0
+          pod: {}
+      terminationGracePeriodSeconds: 0
+      volumes:
+        - name: rootdisk
+          persistentVolumeClaim:
+            claimName: rootdisk-pvc-microshift
+        - name: cdromiso
+          dataVolume:
+            name: cdrom-pvc-microshift
+  dataVolumeTemplates:
+  - metadata:
+      name: cdrom-pvc-microshift
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi
+      source:
+        http: 
+          url: http://cdn.redhat.edge-lab.net/content/microshift-demos/e2e-demo/r4e-microshift-installer.x86_64.iso
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: rootdisk-pvc-microshift
+  namespace: ushift-dev
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  volumeMode: Filesystem
