@@ -57,18 +57,5 @@ spec:
           requests:
             storage: 20Gi
       source:
-        http: 
+        http:
           url: http://cdn.redhat.edge-lab.net/content/microshift-demos/e2e-demo/r4e-microshift-installer.x86_64.iso
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: rootdisk-pvc-microshift
-  namespace: ushift-dev
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  volumeMode: Filesystem
