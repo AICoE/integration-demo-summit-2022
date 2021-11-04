@@ -26,6 +26,7 @@ repos:
     rev: 6.1.1
     hooks:
       - id: pydocstyle
+        exclude: apps/donkeycars/
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
@@ -51,6 +52,7 @@ repos:
     rev: "0.5.0"
     hooks:
       - id: black-nb
+        exclude: apps/donkeycars/
 
   # Enable this in repositories with python packages.
   # - repo: https://github.com/mgedmin/check-manifest
@@ -63,6 +65,7 @@ repos:
     hooks:
       - id: flake8
         additional_dependencies: ["pep8-naming"]
+        exclude: apps/donkeycars/
         # Ignore all format-related checks as Black takes care of those.
         args:
           ["--ignore", "E2,W5", "--select", "E,W,F,N", "--max-line-length=120"]
