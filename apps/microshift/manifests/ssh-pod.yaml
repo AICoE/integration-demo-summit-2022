@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: ushift-dev
+  name: ssh
+  labels:
+    app: ssh
+spec:
+  containers:
+    - name: ssh
+      image: kroniak/ssh-client
