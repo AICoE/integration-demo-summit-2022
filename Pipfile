@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aicoe-donkeycar = "*"
+opencv-python-headless = "*"
+tensorflow = "*"
+pandas = "*"
+imgaug = "0.3.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
