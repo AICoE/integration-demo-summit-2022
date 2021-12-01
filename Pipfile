@@ -9,6 +9,7 @@ opencv-python-headless = "*"
 tensorflow = "*"
 pandas = "*"
 imgaug = "0.3.0"
+wget = "*"
 
 [dev-packages]
 
