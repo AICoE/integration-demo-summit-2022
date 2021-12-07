@@ -18,11 +18,11 @@ managers:
   - name: version
     configuration:
       maintainers:
+        - codificat
         - fridex
         - goern
-        - harshad16
         - michaelclifford
-        - pacospace
+        - TreeinRandomForest
       assignees:
         - sesheta
       labels: [bot]

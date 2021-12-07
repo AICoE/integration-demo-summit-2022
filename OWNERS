@@ -1,12 +1,19 @@
 # See the OWNERS docs at https://go.k8s.io/owners
 
 approvers:
-  - goern
+  - codificat
   - fridex
+  - goern
   - michaelclifford
   - TreeinRandomForest
   - sub-mod
 reviewers:
-  - pacospace
+  - codificat
+  - fridex
+  - goern
   - harshad16
   - kpostoffice
+  - michaelclifford
+  - TreeinRandomForest
+  - pacospace
+  - sub-mod
