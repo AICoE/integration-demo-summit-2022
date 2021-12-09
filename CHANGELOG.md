@@ -1,5 +1,8 @@
 # Changelog for Thoth's Template GitHub Project
 
+## Release 0.3.0 (2021-12-09T21:02:31)
+* initial model files (#38)
+
 ## Release 0.2.0 (2021-12-02T15:07:00)
 * update owners (#32)
 * update pipfile and .aicoe-ci (#26)
