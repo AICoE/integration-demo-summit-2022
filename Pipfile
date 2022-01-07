@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 aicoe-donkeycar = "*"
+gym-donkeycar = {git = "https://github.com/tawnkramer/gym-donkeycar"}
 opencv-python-headless = "*"
 tensorflow = "*"
 pandas = "*"
