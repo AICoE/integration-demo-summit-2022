@@ -163,7 +163,7 @@ PRINT_MODEL_SUMMARY = True  # print layers and weights to stdout
 #
 # #WEB CONTROL
 # WEB_CONTROL_PORT = int(os.getenv("WEB_CONTROL_PORT", 8887))  # which port to listen on when making a web controller
-# WEB_INIT_MODE = "user"              # which control mode to start in. one of user|local_angle|local. Setting local will start in ai mode.
+WEB_INIT_MODE = "local"
 #
 # #JOYSTICK
 # USE_JOYSTICK_AS_DEFAULT = False      #when starting the manage.py, when True, will not require a --js option to use the joystick
@@ -295,13 +295,15 @@ PRINT_MODEL_SUMMARY = True  # print layers and weights to stdout
 # #then extract that and modify DONKEY_SIM_PATH.
 DONKEY_GYM = True
 DONKEY_SIM_PATH = "remote"  # "/home/tkramer/projects/sdsandbox/sdsim/build/DonkeySimLinux/donkey_sim.x86_64" when racing on virtual-race-league use "remote", or user "remote" when you want to start the sim manually first.
-DONKEY_GYM_ENV_NAME = "donkey-generated-track-v0"  # ("donkey-generated-track-v0"|"donkey-generated-roads-v0"|"donkey-warehouse-v0"|"donkey-avc-sparkfun-v0")
-# GYM_CONF = { "body_style" : "donkey", "body_rgb" : (128, 128, 128), "car_name" : "car", "font_size" : 100} # body style(donkey|bare|car01) body rgb 0-255
+DONKEY_GYM_ENV_NAME = "donkey-generated-roads-v0"  # ("donkey-generated-track-v0"|"donkey-generated-roads-v0"|"donkey-warehouse-v0"|"donkey-avc-sparkfun-v0")
+GYM_CONF = {"body_style": "donkey", "font_size": 20}  # body style(donkey|bare|car01) body rgb 0-255
+GYM_CONF["car_name"] = "v0.0.0"
+GYM_CONF["body_rgb"] = (255, 0, 0)
 # GYM_CONF["racer_name"] = "Your Name"
 # GYM_CONF["country"] = "Place"
 # GYM_CONF["bio"] = "I race robots."
 #
-SIM_HOST = "http://sim-svc-ushift-dev.apps.smaug.na.operate-first.cloud"  # "127.0.0.1"              # when racing on virtual-race-league use host "trainmydonkey.com"
+SIM_HOST = "ec2-54-158-84-85.compute-1.amazonaws.com"
 # SIM_ARTIFICIAL_LATENCY = 0          # this is the millisecond latency in controls. Can use useful in emulating the delay when useing a remote server. values of 100 to 400 probably reasonable.
 #
 # # Save info from Simulator (pln)
@@ -320,7 +322,7 @@ SIM_HOST = "http://sim-svc-ushift-dev.apps.smaug.na.operate-first.cloud"  # "127
 # AI_LAUNCH_KEEP_ENABLED = False      # when False ( default) you will need to hit the AI_LAUNCH_ENABLE_BUTTON for each use. This is safest. When this True, is active on each trip into "local" ai mode.
 #
 # #Scale the output of the throttle of the ai pilot for all model types.
-# AI_THROTTLE_MULT = 1.0              # this multiplier will scale every throttle value for all output from NN models
+AI_THROTTLE_MULT = 0.15  # this multiplier will scale every throttle value for all output from NN models
 #
 # #Path following
 # PATH_FILENAME = "donkey_path.pkl"   # the path will be saved to this filename
