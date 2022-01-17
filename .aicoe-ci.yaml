@@ -4,7 +4,9 @@
 check:
   - thoth-build
 # Uncomment following lines to build a public image of this repo
+# base-image is only for meteor and not related to dockerfile
 build:
+  base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.1"
   build-stratergy: Dockerfile # Allowed values: Source, Dockerfile, Containerfile (default: Source)
   dockerfile-path: Dockerfile.donkey
   custom-tag: latest
