@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-      - image: quay.io/aicoe/summit-2021-octo-keynote:test
+      - image: quay.io/aicoe/summit-2021-octo-keynote:test3
         livenessProbe:
           failureThreshold: 1
           initialDelaySeconds: 7200
