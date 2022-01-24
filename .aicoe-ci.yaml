@@ -14,3 +14,8 @@ build:
   registry-org: aicoe
   registry-project: summit-2021-octo-keynote
   registry-secret: aicoe-pusher-secret
+deploy:
+  project-org: "aicoe"
+  project-name: "summit-2021-octo-keynote"
+  image-name: "summit-2021-octo-keynote"
+  overlay-contextpath: "templates/job.yaml"
