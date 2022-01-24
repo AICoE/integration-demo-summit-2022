@@ -12,7 +12,7 @@ import os
 
 #
 # #PATHS
-CAR_PATH = "/opt/app-root/src/projects/summit-2021-octo-keynote/apps/donkeycars/default_car"  # PACKAGE_PATH = os.path.dirname(os.path.realpath(__file__))
+CAR_PATH = PACKAGE_PATH = os.path.dirname(os.path.realpath(__file__))
 DATA_PATH = os.path.join(CAR_PATH, "data")
 MODELS_PATH = os.path.join(CAR_PATH, "models")
 #
@@ -295,9 +295,9 @@ WEB_INIT_MODE = "local"
 # #then extract that and modify DONKEY_SIM_PATH.
 DONKEY_GYM = True
 DONKEY_SIM_PATH = "remote"  # "/home/tkramer/projects/sdsandbox/sdsim/build/DonkeySimLinux/donkey_sim.x86_64" when racing on virtual-race-league use "remote", or user "remote" when you want to start the sim manually first.
-DONKEY_GYM_ENV_NAME = "donkey-generated-roads-v0"  # ("donkey-generated-track-v0"|"donkey-generated-roads-v0"|"donkey-warehouse-v0"|"donkey-avc-sparkfun-v0")
+DONKEY_GYM_ENV_NAME = "donkey-generated-track-v0"  # ("donkey-generated-track-v0"|"donkey-generated-roads-v0"|"donkey-warehouse-v0"|"donkey-avc-sparkfun-v0")
 GYM_CONF = {"body_style": "donkey", "font_size": 20}  # body style(donkey|bare|car01) body rgb 0-255
-GYM_CONF["car_name"] = "v0.0.0"
+GYM_CONF["car_name"] = "tag:v0.0.0"
 GYM_CONF["body_rgb"] = (255, 0, 0)
 # GYM_CONF["racer_name"] = "Your Name"
 # GYM_CONF["country"] = "Place"
@@ -322,7 +322,7 @@ SIM_HOST = "ec2-54-158-84-85.compute-1.amazonaws.com"
 # AI_LAUNCH_KEEP_ENABLED = False      # when False ( default) you will need to hit the AI_LAUNCH_ENABLE_BUTTON for each use. This is safest. When this True, is active on each trip into "local" ai mode.
 #
 # #Scale the output of the throttle of the ai pilot for all model types.
-AI_THROTTLE_MULT = 0.15  # this multiplier will scale every throttle value for all output from NN models
+AI_THROTTLE_MULT = 2.0  # this multiplier will scale every throttle value for all output from NN models
 #
 # #Path following
 # PATH_FILENAME = "donkey_path.pkl"   # the path will be saved to this filename
