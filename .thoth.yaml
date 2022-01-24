@@ -19,7 +19,9 @@ managers:
     configuration:
       maintainers:
         - codificat
-        - fridex
+        - cooktheryan
+        - jimcadden
+        - harshad16
         - goern
         - michaelclifford
         - TreeinRandomForest
