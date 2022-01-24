@@ -14,11 +14,4 @@ spec:
           tcpSocket:
             port: 80
         name: summit-2021-octo-keynote
-        resources:
-          limits:
-            cpu: 500m
-            memory: 512Mi
-          requests:
-            cpu: 500m
-            memory: 256Mi
       restartPolicy: OnFailure
