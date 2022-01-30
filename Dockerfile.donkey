@@ -1,5 +1,7 @@
-FROM docker.io/haoru233/tritonai-donkeycar:4.1-cpu
-ADD apps/donkeycars/default_car/models/mypilot.h5 /donkeys/mycar/models/mypilot.h5
-ADD apps/donkeycars/default_car/myconfig.py /donkeys/mycar/myconfig.py
+FROM docker.io/jcaddenibm/donkeycar_fedora:latest
+ADD apps/donkeycars/default_car/models/mypilot.h5 /root/mycar/models/mypilot.h5
+ADD apps/donkeycars/default_car/myconfig.py /root/mycar/myconfig.py
+ADD apps/donkeycars/default_car/launch_ai_car.sh /root/mycar/launch_ai_car.sh
 EXPOSE 8887
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "donkey", "python", "manage.py", "drive", "--model=models/mypilot.h5"]
+WORKDIR /root/mycar
+ENTRYPOINT ["./launch_ai_car.sh"]
