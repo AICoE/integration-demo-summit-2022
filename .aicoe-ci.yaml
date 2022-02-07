@@ -8,7 +8,7 @@ check:
 build:
   base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.1"
   build-stratergy: Dockerfile # Allowed values: Source, Dockerfile, Containerfile (default: Source)
-  dockerfile-path: Dockerfile.donkey
+  dockerfile-path: Dockerfile.donkey.arm64
   custom-tag: latest
   registry: quay.io
   registry-org: aicoe
