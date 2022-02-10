@@ -1,21 +1,50 @@
-# Setup and configuring aicoe-ci with configuration file `.aicoe-ci.yaml`
-# Example `.aicoe-ci.yaml` with a full list of config options is available here: https://github.com/AICoE/aicoe-ci/blob/master/docs/.aicoe-ci.yaml
----
 check:
-  - thoth-build
-# Uncomment following lines to build a public image of this repo
-# base-image is only for meteor and not related to dockerfile
-build:
-  base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.1"
-  build-stratergy: Dockerfile # Allowed values: Source, Dockerfile, Containerfile (default: Source)
-  dockerfile-path: Dockerfile.donkey
-  custom-tag: latest
-  registry: quay.io
-  registry-org: aicoe
-  registry-project: summit-2021-octo-keynote
-  registry-secret: aicoe-pusher-secret
-deploy:
-  project-org: "aicoe"
-  project-name: "summit-2021-octo-keynote"
-  image-name: "summit-2021-octo-keynote"
-  overlay-contextpath: "templates/job.yaml"
+  - overlays-build
+overlays_dir: .
+overlays:
+  - name: digital-twin
+    build:
+      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.1"
+      build-stratergy: Dockerfile
+      dockerfile-path: Dockerfile.donkey
+      custom-tag: latest
+      registry: quay.io
+      registry-org: aicoe
+      registry-project: summit-2021-octo-keynote
+      registry-secret: aicoe-pusher-secret
+    deploy:
+      project-org: "aicoe"
+      project-name: "summit-2021-octo-keynote"
+      image-name: "summit-2021-octo-keynote"
+      overlay-contextpath: "templates/overlays/digital-twin/job.yaml"
+
+  - name: raspberry-pi-edge-device
+    build:
+      build-stratergy: Dockerfile
+      dockerfile-path: Dockerfile.donkey.arm64
+      arch: arm64
+      registry: quay.io
+      registry-org: aicoe
+      registry-project: summit-2021-octo-keynote
+      registry-secret: aicoe-pusher-secret
+    deploy:
+      project-org: "aicoe"
+      project-name: "summit-2021-octo-keynote"
+      image-name: "summit-2021-octo-keynote"
+      overlay-contextpath: "templates/overlays/raspberry-pi-edge/job.yaml"
+
+  # uncomment when we have jetson edge device live
+  # - name: jetson-edge-device
+  #   build:
+  #     build-stratergy: Dockerfile
+  #     dockerfile-path: Dockerfile.donkey.arm64
+  #     arch: arm64
+  #     registry: quay.io
+  #     registry-org: aicoe
+  #     registry-project: summit-2021-octo-keynote
+  #     registry-secret: aicoe-pusher-secret
+  #   deploy:
+  #     project-org: "aicoe"
+  #     project-name: "summit-2021-octo-keynote"
+  #     image-name: "summit-2021-octo-keynote"
+  #     overlay-contextpath: "templates/overlays/jetson-edge/job.yaml"
