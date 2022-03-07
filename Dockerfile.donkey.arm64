@@ -1,7 +1,7 @@
 FROM docker.io/jcaddenibm/donkeycar_fedora:arm64
-ADD apps/donkeycars/default_car/models/mypilot.h5 /root/mycar/models/mypilot.h5
-ADD apps/donkeycars/default_car/myconfig.py /root/mycar/myconfig.py
-ADD apps/donkeycars/default_car/launch_ai_car.sh /root/mycar/launch_ai_car.sh
+ADD apps/donkeycars/default_car/models/rpi-mypilot.h5 /root/mycar/models/mypilot.h5
+ADD apps/donkeycars/default_car/rpi-myconfig.py /root/mycar/myconfig.py
+ADD apps/donkeycars/default_car/launch_rv_car.sh /root/mycar/launch_car.sh
 EXPOSE 8887
 WORKDIR /root/mycar
-ENTRYPOINT ["./launch_ai_car.sh"]
+ENTRYPOINT ["./launch_car.sh"]
