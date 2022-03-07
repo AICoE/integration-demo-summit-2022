@@ -5,7 +5,7 @@ metadata:
 spec:
   template:
     metadata:
-      label:
+      labels:
         app: summit-2021-octo-keynote-webui
     spec:
       containers:
