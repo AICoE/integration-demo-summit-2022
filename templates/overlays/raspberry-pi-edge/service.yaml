@@ -13,6 +13,6 @@ spec:
     protocol: TCP
     targetPort: 8887
   selector:
-    name: summit-2021-octo-keynote
+    app: summit-2021-octo-keynote-webui
   sessionAffinity: None
   type: NodePort
