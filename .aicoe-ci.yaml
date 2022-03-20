@@ -4,7 +4,7 @@ overlays_dir: .
 overlays:
   - name: digital-twin
     build:
-      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.1"
+      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.4"
       build-stratergy: Dockerfile
       dockerfile-path: Dockerfile.donkey
       custom-tag: latest
