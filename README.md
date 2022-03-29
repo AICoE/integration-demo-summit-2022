@@ -1,4 +1,4 @@
-# summit-2021-octo-keynote
+# summit-2022-octo-keynote
 
 [![Docker Repository on Quay](https://quay.io/repository/aicoe/summit-2021-octo-keynote/status "Docker Repository on Quay")](https://quay.io/repository/aicoe/summit-2021-octo-keynote)
 
