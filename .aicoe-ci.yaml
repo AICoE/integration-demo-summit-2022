@@ -14,8 +14,8 @@ overlays:
       registry-secret: aicoe-pusher-secret
     deploy:
       project-org: "aicoe"
-      project-name: "summit-2021-octo-keynote"
-      image-name: "summit-2021-octo-keynote"
+      project-name: "summit-2022-octo-keynote"
+      image-name: "summit-2022-octo-keynote"
       overlay-contextpath: "templates/overlays/digital-twin/job.yaml"
 
   - name: raspberry-pi-edge-device
@@ -29,8 +29,8 @@ overlays:
       registry-secret: aicoe-pusher-secret
     deploy:
       project-org: "aicoe"
-      project-name: "summit-2021-octo-keynote"
-      image-name: "summit-2021-octo-keynote"
+      project-name: "summit-2022-octo-keynote"
+      image-name: "summit-2022-octo-keynote"
       overlay-contextpath: "templates/overlays/raspberry-pi-edge/job.yaml"
 
   # uncomment when we have jetson edge device live
@@ -45,6 +45,6 @@ overlays:
   #     registry-secret: aicoe-pusher-secret
   #   deploy:
   #     project-org: "aicoe"
-  #     project-name: "summit-2021-octo-keynote"
-  #     image-name: "summit-2021-octo-keynote"
+  #     project-name: "summit-2022-octo-keynote"
+  #     image-name: "summit-2022-octo-keynote"
   #     overlay-contextpath: "templates/overlays/jetson-edge/job.yaml"
