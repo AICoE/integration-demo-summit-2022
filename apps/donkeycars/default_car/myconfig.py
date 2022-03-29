@@ -1,13 +1,10 @@
 # """
 # My CAR CONFIG
-
 # This file is read by your car application's manage.py script to change the car
 # performance
-
 # If desired, all config overrides can be specified here.
 # The update operation will not touch this file.
 # """
-
 # import os
 #
 # #PATHS
@@ -125,7 +122,7 @@ THROTTLE_REVERSE_PWM = 325  # pwm value for max reverse throttle
 # #line parameter --type to the python manage.py train and drive commands.
 # # tensorflow models: (linear|categorical|tflite_linear|tensorrt_linear)
 # # pytorch models: (resnet18)
-# DEFAULT_MODEL_TYPE = 'linear'
+DEFAULT_MODEL_TYPE = "categorical"
 # BATCH_SIZE = 128                #how many records to use when doing one pass of gradient decent. Use a smaller number if your gpu is running out of memory.
 # TRAIN_TEST_SPLIT = 0.8          #what percent of records to use for training. the remaining used for validation.
 # MAX_EPOCHS = 100                #how many times to visit all records of your data
@@ -321,7 +318,7 @@ AUTO_CREATE_NEW_TUB = (
 # AI_LAUNCH_KEEP_ENABLED = False      # when False ( default) you will need to hit the AI_LAUNCH_ENABLE_BUTTON for each use. This is safest. When this True, is active on each trip into "local" ai mode.
 #
 # #Scale the output of the throttle of the ai pilot for all model types.
-AI_THROTTLE_MULT = 0.80  # this multiplier will scale every throttle value for all output from NN models
+AI_THROTTLE_MULT = 1.65  # this multiplier will scale every throttle value for all output from NN models
 #
 # #Path following
 # PATH_FILENAME = "donkey_path.pkl"   # the path will be saved to this filename
