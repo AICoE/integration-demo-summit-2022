@@ -1,12 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: summit-2021-octo-keynote-v0.3.14
+  name: summit-2021-octo-keynote-v0.3.15
 spec:
   template:
     spec:
       containers:
-      - image: quay.io/aicoe/summit-2021-octo-keynote:v0.3.14
+      - image: quay.io/aicoe/summit-2021-octo-keynote:v0.3.15
         livenessProbe:
           failureThreshold: 1
           initialDelaySeconds: 7200
