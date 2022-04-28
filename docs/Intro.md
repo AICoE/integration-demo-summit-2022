@@ -1,8 +1,8 @@
-# Summit 2022 OCTO Keynote Demo!
+# ML @ THE EDGE!
 
-In this demo we will walk you through how to manage a machine learning application lifecycle on an edge device using a couple of projects developed by Red Hat's Emerging Technologies group. Specifically, Open Data Hub, Microshift and Meteor running on the Operate First Community cloud.
+In this demo we will walk through what it takes to manage a machine learning application's lifecycle on an edge device using a few projects developed by Red Hat's Emerging Technologies group. Specifically, we will use [Open Data Hub](https://opendatahub.io/), [Microshift](https://github.com/redhat-et/microshift) and [Meteor](https://shower.meteor.zone/) along with a couple other open source projects running on the [Operate First community cloud](https://www.operate-first.cloud/).
 
-The goal of this project is to demonstrate the development, training and deployment of a real intelligent edge device, an autonomous RV car, via the [Operate First community cloud](https://www.operate-first.cloud/) with resiliency to supply chain attacks.
+The goal of this project is to demonstrate the development, training and deployment of an intelligent application onto an edge device, an autonomous RV car, via the [Operate First community cloud](https://www.operate-first.cloud/).
 
 ## The Approach
 
@@ -13,47 +13,55 @@ For this demo we are going to target the autonomous RV car project [DonkeyCar](h
 https://www.donkeycar.com/
 
 
-The DonkyCar project is, "An opensource DIY self driving platform for small scale cars. RC CAR  +  Raspberry Pi + Python (tornado, keras, tensorflow, opencv, ....)". This project has an active community, as well as open source code, data, and ml models that make it simple for us to develop this demo in an open source and evergreen fashion. Furthermore, the DonkeyCar project has also developed a simulator, so you can try out the vast majority of this demo yourself without the need for a physical car!
+The DonkeyCar project is, "An opensource DIY self driving platform for small scale cars. RC CAR  +  Raspberry Pi + Python (tornado, keras, tensorflow, opencv, ....)". This project has an active community, as well as open source code, data, and ml models that make it simple to develop this demo in an open source and evergreen fashion. Furthermore, the DonkeyCar project has also built a simulator, so anyone can try out the vast majority of this demo without the need for a physical car!
 
 
 ### Prerequisites
 
-The infrastructure needed to get started has already been set up for you on the Operate First Community Cloud. This means the donkeycar simulator(tbd), Open Data Hub development resources, git based build pipelines and microshift in a VM that will serve as a digital twin(tbd) to our physical car is already to go (you will have to set up your own physical car, but you can follow our detailed instructions [here](need_detailed_instructions)).
+The infrastructure required for this demo has been (_mostly_) set up on the Operate First Community Cloud:
+
+* DonkeyCar simulator
+* Open Data Hub
+* Meteor
+* Tekton
+* ArgoCD
+* Minishift (on the physical car)
 
 
-### Access the Development Environment
 
-The First thing you have to do is spin up a data science development environment. This can be done easily by going to https://shower.meteor.zone/ and using the URL for this repo to build a jupyter lab images with all the development requirements installed based on our [Pipfile](../Pipfile).
+## The Development Environment
+
+The first thing we do is spin up a data science development environment. This can be easily done by going to https://shower.meteor.zone/ and using the URL for this repo to build a jupyter lab images with all the development requirements installed based on our [Pipfile.lock](../Pipfile.lock).
 
 ![meteor](assets/images/meteor-home-page.png)
 
-Once the build is complete, you can then go ahead and spawn the image in the Operate First Community Cloud Jupyter Hub Instance [here](https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/).
+Once the build is complete, we can then go ahead and spawn our custom notebook image in the Operate First Community Cloud Jupyter Hub Instance [here](https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/). The image should have the same name as the meteor.
 
 ![jupyter_spawner](assets/images/jupyterhub-spawner.png)
 
-### Train Your Own Model
+## Train A Model
 
-You now have your own Jupyter Lab environment and are ready to start developing a self driving car! From this point you can start to download some datasets, train models, and experiment with different machine learning model architectures!
+Now that we've spawned a Jupyter Lab environment, we're ready to start training a model for a self driving car! From this point, we can start to download some datasets, train models, and experiment with different machine learning model architectures!
 
-If you just want to follow along with some existing work, take a look at and run the example notebooks we've used below:
+Below you can find two example notebooks we've used to download some publicly available data and train a simple model:
 
 * [Download Data Notebook](../apps/donkeycars/default_car/Download_Data.ipynb)
 * [Training Notebook](../apps/donkeycars/default_car/simple_train.ipynb)
 
-### Deploy Your Model
+## Deploy the Model
 
-Now that you have a trained self driving car model ready to go, let's get it into our car (or our digital twin)!
+Now that we have a trained self driving car model ready to go, let's deploy it to our car (or digital twin)!
 
-This can be done by simply making a Pull Request and getting your new model merged into the upstream repository, then making a new tag release on the repo. The tag release will kick off the automated build pipeline through [Tekton](https://tekton.operate-first.cloud/#/pipelineruns) based on our [Digital Twin Dockerfile](../Dockerfile.donkey) and [RC Car Dockerfile](../Dockerfile.donkey.arm64), creating two new images for us with our new model and push them both to [quay.io](quay.io).
+This is done by simply making a Pull Request to our GitHub repository, getting our new model merged into the upstream repository, and then making a new tag release on the repo. The tag release will kick off the automated build pipeline through [Tekton](https://tekton.operate-first.cloud/#/pipelineruns) based on our [Digital Twin Dockerfile](../Dockerfile.donkey) and [RC Car Dockerfile](../Dockerfile.donkey.arm64), creating two new images, each with our new model and push them to [quay.io](https://quay.io/repository/aicoe/summit-2021-octo-keynote?tab=tags) along with [signed signatures](https://tekton.dev/docs/chains/signing/).
 
 ```bash
 $ git tag <your release tag>
 ```
 ![tekton](assets/images/tekton.png)
 
-Once the images are built and pushed to quay, [ArgoCD](argocd.operate-first.cloud) takes over to deploy the new images on their respective devices, [microshift]( https://microshift.io/) running on a RaspberryPi controlling the physical RC car and microshift running on a NUC controlling the digital twin.
+Once the images are built and pushed to quay, [ArgoCD](argocd.operate-first.cloud) takes over and deploys the new images on their respective devices, the [cosgined](https://github.com/sigstore/cosign) validator validates the signed signatures, ensure the images are the valid images and approves the deployment to [microshift]( https://microshift.io/) running on a RaspberryPi controlling the physical RC car and microshift running on a NUC controlling the digital twin.
 
 
 ![Sim-Car](assets/images/donkey-sim.png)
 
-Congrats! You've just successfully developed and deployed a self-driving RC car model to the edge with the help of Red Hat's Emerging Technologies group!
+And with that we have successfully developed and deployed a self-driving RC car model to the edge with the help of a couple projects developed by Red Hat's Emerging Technologies group!
