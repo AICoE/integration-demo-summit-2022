@@ -1,1 +1,0 @@
-# SigStore Staging

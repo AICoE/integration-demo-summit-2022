@@ -1,9 +1,9 @@
 format: jb-book
-root: docs/Intro
+root: README
 parts:
   - caption: Download Data
     chapters:
     - file: apps/donkeycars/default_car/Download_Data
   - caption: Train Your Own Model
     chapters:
-      - file: apps/donkeycars/default_car/simple_train
+    - file: apps/donkeycars/default_car/simple_train
