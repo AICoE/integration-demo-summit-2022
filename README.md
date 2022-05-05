@@ -31,9 +31,9 @@ The infrastructure required for this demo has been (_mostly_) set up on the Oper
 
 ## The Development Environment
 
-The first thing we do is spin up a data science development environment. This can be easily done by going to https://shower.meteor.zone/ and using the URL for this repo to build a jupyter lab images with all the development requirements installed based on our [Pipfile.lock](../Pipfile.lock).
+The first thing we do is spin up a data science development environment. This can be easily done by going to https://shower.meteor.zone/ and using the URL for this repo to build a jupyter lab image with all the development requirements installed based on our [Pipfile.lock](../Pipfile.lock).
 
-![meteor](docs/assets/images/meteor-home-page.png)
+![meteor](docs/assets/images/meteor-integration.png)
 
 Once the build is complete, we can then go ahead and spawn our custom notebook image in the Operate First Community Cloud Jupyter Hub Instance [here](https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/). The image should have the same name as the meteor.
 
